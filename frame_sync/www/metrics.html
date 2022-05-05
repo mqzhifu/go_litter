@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>metrics</title>
+</head>
+
+<script src="jquery.min.js" type="text/javascript"></script>
+
+<body>
+
+
+<div id="list">
+
+</div>
+
+<script>
+    var serverHostUri = "/www/getMetrics";
+    $.ajax({
+        // data: {username:$("#username").val(), content:$("#content").val()},
+        // dataType: "json",
+        type: "GET",
+        // url: "http://192.168.192.91:2222/www/getServer",
+        // url: "http://127.0.0.1:2222/www/getServer",
+        url:serverHostUri,
+        success: function(data){
+            init(data);
+        }
+    });
+
+    function init(data){
+        var html = "<table border='1'>";
+        for(let key  in data){
+            html += "<tr><td>"+key+"</td><td>"+data[key]+"</td></tr>";
+        }
+        html += "</table>";
+        $("#list").html(html)
+    }
+
+</script>
+</body>
+</html>

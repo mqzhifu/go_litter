@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apilist</title>
+</head>
+
+<script src="jquery.min.js" type="text/javascript"></script>
+
+<body>
+
+c发送
+<div id="client">
+
+</div>
+<br/>
+s发送
+<div id="server">
+
+</div>
+
+<script>
+    var serverHostUri = "/www/apilist";
+    $.ajax({
+        // data: {username:$("#username").val(), content:$("#content").val()},
+        // dataType: "json",
+        type: "GET",
+        // url: "http://192.168.192.91:2222/www/getServer",
+        // url: "http://127.0.0.1:2222/www/getServer",
+        url:serverHostUri,
+        success: function(data){
+            init(data);
+        }
+    });
+
+    // function init(data){
+    //     var clientHtml = initActionMap(data.ActionMap.client,data.JsonFormat)
+    //     $("#client").html(clientHtml);
+    //
+    //     var serverHtml = initActionMap(data.ActionMap.server,data.JsonFormat)
+    //     $("#server").html(serverHtml);
+    // }
+    //
+    // function initActionMap(data,JsonFormat){
+    //     var html = "<table border='1'><tr><td>id</td><td>action</td><td>描述</td></tr>";
+    //     for(let key  in data){
+    //         html += "<tr><td>"+data[key].Id+"</td><td>"+data[key].Action+"</td><td>"+data[key].Desc+"</td><td>"+JsonFormat[key]+"</td></tr>"
+    //     }
+    //     html += "</table>";
+    //     return html;
+    // }
+
+    function init(data){
+        var clientHtml = initActionMap(data.client)
+        $("#client").html(clientHtml);
+
+        var serverHtml = initActionMap(data.server)
+        $("#server").html(serverHtml);
+    }
+
+    function initActionMap(data,JsonFormat){
+        var html = "<table border='1'><tr><td>id</td><td>action</td><td>描述</td></tr>";
+        for(let key  in data){
+            html += "<tr><td>"+data[key].id+"</td><td>"+data[key].action+"</td><td>"+data[key].desc+"</td></tr>"
+        }
+        html += "</table>";
+        return html;
+    }
+
+
+</script>
+</body>
+</html>

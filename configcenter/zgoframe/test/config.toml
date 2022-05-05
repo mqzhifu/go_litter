@@ -1,0 +1,83 @@
+[system]
+dbType = "mysql"
+env = ""
+appId = 5
+
+[jwt]
+status = "open"
+key = "chukong"
+expiresTime = 3600
+bufferTime = 3600
+
+
+[viper]
+status = "open"
+watch = "open"
+
+[zap]
+status = "open"
+level = "info"
+dir = "/www/project/zgoframe/logs"
+showLine = true
+linkName = "latest_log"
+LogInConsole = true
+format = "console"
+StacktraceKey = "stacktrace"
+Prefix = "zgo"
+encodeLevel = "LowercaseColorLevelEncoder"
+auoAlert = true
+
+[redis]
+status = "open"
+db-number = 1
+ip = "127.0.0.1"
+port = "6379"
+password =  ''
+
+[captcha]
+status = "open"
+numberLength = 4
+imgWidth = 240
+imgHeight = 80
+
+
+[http]
+status = "open"
+ip = "127.0.0.1"
+port = "5555"
+staticPath ="/www/project/zgoframe/static"
+reqLimitTimes= 100
+
+[mysql]
+status = "open"
+ip = "192.168.1.228"
+port = "3306"
+config = "charset=utf8mb4&parseTime=True&loc=Local"
+db-name = "pg_account"
+username = "pgaccount"
+password = "Pgaccount123"
+maxIdleConns = 10
+maxOpenConns = 100
+logMode = true
+logZap = false
+
+[casbin]
+status = "open"
+modelPath = "/www/project/zgoframe/static/data/rbac_model.conf"
+
+[etcd]
+status = "close"
+ip = ""
+port = ""
+username = ""
+password = ""
+url = "http://114.116.212.202/account/dev/v1/sys/etcd"
+
+[alert]
+status = "open"
+host = "127.0.0.1"
+port = "9093"
+uri = "/api/v2/alerts"
+
+[metrics]
+status = "open"

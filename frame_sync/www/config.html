@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>server - config</title>
+</head>
+<body>
+<!--ws-->
+<!--<div id="ws">-->
+
+<!--</div>-->
+
+
+<div id="other">
+
+</div>
+
+<script src="jquery.min.js" type="text/javascript"></script>
+<script>
+
+    // var domain = window.location.host;
+    var serverHostUri = "/www/getServer";
+    $.ajax({
+        // data: {username:$("#username").val(), content:$("#content").val()},
+        // dataType: "json",
+        type: "GET",
+        // url: "http://192.168.192.91:2222/www/getServer",
+        // url: "http://127.0.0.1:2222/www/getServer",
+        url:"/www/getServer",
+        url:serverHostUri,
+        success: function(data){
+            init(data);
+        }
+    });
+
+    function init(data){
+        // var clientHtml = initActionMap(data.ActionMap.client)
+        // $("#client").html(clientHtml);
+        //
+        // var serverHtml = initActionMap(data.ActionMap.server)
+        // $("#server").html(serverHtml);
+
+
+        // var html = "<table>" +
+        //     "<tr><td>ip</td><td>"+data.Host+"</td></tr>" +
+        //     "<tr><td>uri</td><td>"+data.Uri+"</td></tr>" +
+        //     "<tr><td>port</td><td>"+data.Port+"</td></tr>"
+        // ;
+        // html += "</table>";
+        // $("#ws").html(html);
+
+
+            // ListenIp			:options.ListenIp,
+            // LoginAuthSecretKey	:options.LoginAuthSecretKey,
+            // IOTimeout			:options.IOTimeout,
+            // ConnTimeout			:options.ConnTimeout,
+            // HttpdRootPath		:options.HttpdRootPath,
+            // HttpPort			:options.HttpPort,
+
+
+        var html = "<table>" +
+            "<tr><td>key</td><td>value</td><td>描述</td></tr>"+
+            "<tr><td>outIp</td><td>"+data.outIp+"</td><td>长连接IP地址</td></tr>" +
+            "<tr><td>wsPort</td><td>"+data.wsPort+"</td><td>websocket-长连接端口号</td></tr>"+
+            "<tr><td>tcpPort</td><td>"+data.tcpPort+"</td><td>TCP-长连接端口号</td></tr>"+
+            "<tr><td>udpPort</td><td>"+data.udpPort+"</td><td>UDP-连接端口号</td></tr>"+
+            "<tr><td>protocol</td><td>"+data.protocol+"</td><td>协议类型</td></tr>"+
+            "<tr><td>roomReadyTimeout</td><td>"+data.roomReadyTimeout+"</td><td>创建房间后，给玩家的准备时间</td></tr>"+
+            "<tr><td>store</td><td>"+data.store+"</td><td>是否已开始持久化功能</td></tr>"+
+            "<tr><td>httpdRootPath</td><td>"+data.httpdRootPath+"</td><td>http监听路径</td></tr>"+
+            "<tr><td>httpPort</td><td>"+data.httpPort+"</td><td>http监听端口号</td></tr>"+
+
+            "<tr><td>wsUri</td><td>"+data.wsUri+"</td><td>WS相对地址，完整地址：IP:PORT/wsUri </td></tr>" +
+            "<tr><td>mapSize</td><td>"+data.mapSize+"</td><td>地图矩阵大小，用于测试</td></tr>" +
+            "<tr><td>contentType</td><td>"+data.contentType+"</td><td>传输内容格式，目前支持：JSON PROTOBUF</td></tr>" +
+            "<tr><td>loginAuthType</td><td>"+data.loginAuthType+"</td><td>长连接登陆内容验证方式</td></tr>" +
+
+            "<tr><td>offLineWaitTime</td><td>"+data.offLineWaitTime+"</td><td>客户端连接N秒内没有IO操作，服务端将回收该连接SOCKET FD</td></tr>" +
+            "<tr><td>maxClientConnNum</td><td>"+data.maxClientConnNum+"</td><td>客户端最大连接数</td></tr>" +
+            "<tr><td>roomTimeout</td><td>"+data.roomTimeout+"</td><td>房间超时，如果一个房间所有人均掉线后，到达这个时间，系统将回收该房间</td></tr>" +
+
+
+            "<tr><td>lockMode</td><td>"+data.lockMode+"</td><td>1囚徒模式2乐观锁</td></tr>"+
+            "<tr><td>FPS</td><td>"+data.fps+"</td><td>每秒多少逻辑帧，使用者要1000/FPS=XX ms</td></tr>"+
+
+            "<tr><td>roomPeople</td><td>"+data.roomPeople+"</td><td>一个房间多少人</td></tr>"
+
+        ;
+        html += "</table>";
+        $("#other").html(html);
+    }
+
+    // function initActionMap(data){
+    //     var html = "<table border='1'><tr><td>id</td><td>action</td><td>描述</td></tr>";
+    //     for(let key  in data){
+    //         html += "<tr><td>"+data[key].Id+"</td><td>"+data[key].Action+"</td><td>"+data[key].Desc+"</td><td>"+data[key].Demo+"</td></tr>"
+    //     }
+    //     html += "</table>";
+    //     return html;
+    // }
+
+</script>
+
+</body>
+</html>
